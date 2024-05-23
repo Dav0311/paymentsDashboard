@@ -1,12 +1,12 @@
 @extends('frontend.master')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="content">
     <div class="card">
        <div class="card-header">
         <div class="text">
-        <h1>Create Transactions</h1>
+        <h1>Edit Transactions</h1>
         <a href="{{ route('transaction.index') }}">
             <h3 class=" float-end">Back</h3>
         </a>

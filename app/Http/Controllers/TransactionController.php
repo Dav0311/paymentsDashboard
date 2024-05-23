@@ -59,8 +59,13 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transaction $transaction)
+    public function show($id)
     {
+        $transaction = Transaction::find($id);
+
+        if (!$transaction) {
+            return redirect()->route('transactions.index')->with('error', 'Transaction not found.');
+        }
         // Return the transaction show page
         return view('transaction.show', ['transaction' => $transaction]);
     }
@@ -69,11 +74,18 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transaction $transaction)
+    public function edit($id)
     {
-        // Return the edit view with the transaction data
+        
+        $transaction = Transaction::find($id);
+
+        if (!$transaction) {
+            return redirect()->route('transactions.index')->with('error', 'Transaction not found.');
+        }
+ 
         return view('transaction.edit', compact('transaction'));
     }
+    
 
 
     /**
@@ -93,7 +105,6 @@ class TransactionController extends Controller
             'transaction_ref' => 'required|string|max:255'
         ]);
         
-
         Transaction::update($validatedData);
         return redirect()->route('transaction.index')->with('success','Transaction created successfully.');
     }

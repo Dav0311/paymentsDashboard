@@ -23,8 +23,8 @@ Route::get('/home', [TemplateController::class, 'index'])->name('frontend.home')
 // Route::resource('/transaction', TransactionController::class);
 Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction.index');
 Route::get('/create_transaction', [TransactionController::class, 'create'])->name('transaction.create');
-Route::get('/show_transaction/{transaction}', [TransactionController::class, 'show'])->name('transaction.show');
-Route::get('/edit_transaction/{transaction}', [TransactionController::class, 'edit'])->name('transaction.edit');
+Route::get('/show_transaction/{id}', [TransactionController::class, 'show'])->name('transaction.show');
+Route::get('/edit_transaction/{id}', [TransactionController::class, 'edit'])->name('transaction.edit');
 Route::post('/store_transaction', [TransactionController::class, 'store'])->name('store');
 Route::post('/update_transaction/{$id}', [TransactionController::class, 'update'])->name('transaction.update');
 Route::delete('/delete_transaction/{transaction}', [TransactionController::class, 'destroy'])->name('transaction.delete');

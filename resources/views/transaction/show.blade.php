@@ -7,7 +7,7 @@
        <div class="card-header">
         <div class="text">
         <h1>Transactions page</h1>
-        <a href="{{ route('transaction.index') }}">
+        <a href="{{ url('/index_transaction') }}">
             <h3 class=" float-end">create transaction</h3>
         </a>
         </div>

@@ -47,13 +47,13 @@
                                <td>{{ $t->currency }}</td>
                                <td>{{ $t->ctransaction_ref }}</td>
                                <td>
-                                   <a href="{{ route('transaction.show', $t->id) }}">
+                                   <a href="{{ url('/show_transaction/'.$t->id) }}">
                                    <button type="submit" class="btn btn-success" >Show</button>
                                    </a>
-                                   <a href="{{route('transaction.edit', $t->id) }}">
+                                   <a href="{{ url('/edit_transaction/'.$t->id) }}">
                                    <button type="submit" class="btn btn-info" >Edit</button>
                                    </a>
-                                   <form action="{{ url('/delete_transaction', $t->id) }}" method="POST" style="display:inline;">
+                                   <form action="{{ url('/delete_transaction/'.$t->id) }}" method="POST" style="display:inline;">
                                        @csrf
                                        @method('DELETE')
                                        <button type="submit" class="btn btn-danger" >Delete</button>
