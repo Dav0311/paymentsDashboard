@@ -10,12 +10,12 @@ class TransactionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //fetch all transactions 
-       
+
         $transactions = Transaction::all();
-        return view('transaction.index', compact('transactions'));
+        return view('transaction.index', ['transactions' => $transactions]);
     }
 
     /**

@@ -23,51 +23,36 @@
             </div>
            @endif
            <div class="table">
-           <table class="table">
-               <thead>
-                   <tr>
-                       <th scope="col"> ID</th>
-                       <th scope="col">Name</th>
-                       <th scope="col">Phone No.</th>
-                       <th scope="col">Email</th>
-                       <th scope="col">Action</th>
-                   </tr>
-               </thead>
-               <tbody>
-                   @if (isset($transactions) && !empty($transactions))
-                       @foreach ($transactions as $t)
-                       <tr class="table-active">
-                               <td>{{ $t->id }}</td>
-                               <td>{{ $t->full_name }}</td>
-                               <td>{{ $t->phone_no }}</td>
-                               <td>{{ $t->email }}</td>
-                               <td>{{ $t->src_of_transaction}}</td>
-                               <td>{{ $t->amount}}</td>
-                               <td>{{ $t->pdate_of_payment }}</td>
-                               <td>{{ $t->currency }}</td>
-                               <td>{{ $t->ctransaction_ref }}</td>
-                               <td>
-                                   <a href="{{ url('/show_transaction/'.$t->id) }}">
-                                   <button type="submit" class="btn btn-success" >Show</button>
-                                   </a>
-                                   <a href="{{ url('/edit_transaction/'.$t->id) }}">
-                                   <button type="submit" class="btn btn-info" >Edit</button>
-                                   </a>
-                                   <form action="{{ url('/delete_transaction/'.$t->id) }}" method="POST" style="display:inline;">
-                                       @csrf
-                                       @method('DELETE')
-                                       <button type="submit" class="btn btn-danger" >Delete</button>
-                                   </form>
-                               </td>
-                           </tr>
-                       @endforeach
-                   @else
-                       <tr>
-                           <td colspan="5">No transactions available yet.</td>
-                       </tr>
-                   @endif
-               </tbody>
-           </table>
+           <table id="example" class="display nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Source of Transaction</th>
+                    <th>Email</th>
+                    <th>Amount</th>
+                    <th>Phone No.</th>
+                    <th>Currency</th>
+                    <th>Date of Payment</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($transactions as $transaction)
+                    <tr>
+                        <td>{{ $transaction->id }}</td>
+                        <td>{{ $transaction->full_name }}</td>
+                        <td>{{ $transaction->src_of_transaction }}</td>
+                        <td>{{ $transaction->email }}</td>
+                        <td>{{ $transaction->amount }}</td>
+                        <td>{{ $transaction->phone_no }}</td>
+                        <td>{{ $transaction->currency }}</td>
+                        <td>{{ $transaction->date_of_payment }}</td>
+                        
+                    </tr>
+                @endforeach
+            </tbody> 
+        </table>
        </div>
             </div>
         </div>
