@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 @section('content')
-<div class="container mt-5">
+
     <div class="content">
     <div class="card">
        <div class="card-header">
@@ -79,5 +79,5 @@
         </div>
     </div>
     </div>
-</div>  
+
 @endsection

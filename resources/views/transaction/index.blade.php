@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 @section('content')
-<div class="container">
+
     <div class="content">
     <div class="card">
        <div class="card-header">
@@ -34,7 +34,7 @@
                     <th>Phone No.</th>
                     <th>Currency</th>
                     <th>Date of Payment</th>
-                
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +48,21 @@
                         <td>{{ $transaction->phone_no }}</td>
                         <td>{{ $transaction->currency }}</td>
                         <td>{{ $transaction->date_of_payment }}</td>
-                        
+
+                        <td>
+                            <a href="{{ url('/show_transaction/'.$transaction->id) }}">
+                            <button type="submit" class="btn btn-success" >Show</button>
+                            </a>
+                            <a href="{{ url('/edit_transaction/'.$transaction->id) }}">
+                            <button type="submit" class="btn btn-info" >Edit</button>
+                            </a>
+                            <form action="{{ url('/delete_transaction/'.$transaction->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" >Delete</button>
+                            </form>
+                        </td>
+                     
                     </tr>
                 @endforeach
             </tbody> 
@@ -58,6 +72,6 @@
         </div>
     </div>
     </div>
-</div>  
+  
 @endsection
 

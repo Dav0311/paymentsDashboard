@@ -62,7 +62,7 @@ class TransactionController extends Controller
     public function show($id)
     {
         $transaction = Transaction::find($id);
-
+    
         if (!$transaction) {
             return redirect()->route('transactions.index')->with('error', 'Transaction not found.');
         }
